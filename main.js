@@ -18,3 +18,19 @@ let input2 = document.getElementById('text');
 input2.addEventListener('input', function (event) {
     title2.textContent = event.target.value;
 })
+
+//Ejemplo3
+window.addEventListener("keydown", function (event) {
+    if (event.key == "Enter") {
+        document.body.style.background = "lightblue";
+    }
+
+    if (event.key == "Enter" && event.ctrlKey) {
+        document.body.style.background = "orange";
+    }
+});
+window.addEventListener("keyup", function (event) {
+    if (event.key == "Enter") {
+        document.body.style.background = "";
+    }
+})
