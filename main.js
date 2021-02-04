@@ -71,3 +71,30 @@ document.querySelector('#openModal').addEventListener('click', function () {
 document.querySelector('.close').addEventListener('click', function () {
     modal.style.display = 'none';
 });
+
+//Reto 3
+
+const createTabs = (node) => {
+    let div = document.createElement('div');
+    div.id = 'buttons';
+    div.style.display = 'flex';
+    [...node.children].forEach(tab => {
+        tab.style.display = 'none';
+        let button = document.createElement('button')
+        button.textContent = tab.getAttribute('data-tabname');
+
+        button.addEventListener('click', function () {
+            [...node.children].slice(1).forEach(tabDiv => {
+                tabDiv.style.display = tabDiv == tab ? 'block' : 'none';
+                [...document.querySelector('#buttons').children].forEach(button => {
+                    button.style.color = 'black';
+                });
+                this.style.color = 'red';
+            });
+        });
+        div.appendChild(button);
+    })
+    node.insertBefore(div, node.firstChild);
+}
+
+createTabs(document.querySelector('#tab-panel'));
