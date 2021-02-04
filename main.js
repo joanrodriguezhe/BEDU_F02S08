@@ -34,3 +34,29 @@ window.addEventListener("keyup", function (event) {
         document.body.style.background = "";
     }
 })
+
+
+//Reto 1
+
+let globo = document.querySelector('#globo');
+let globoSize = 20;
+
+globo.style.fontSize=`${globoSize}px`;
+
+const updateGloblo = (event) => {
+    event.preventDefault();
+    if (event.key == "ArrowUp") {
+        if(globoSize>80){
+            globo.textContent = '💥';
+            window.removeEventListener("keydown", updateGloblo);
+        }else{
+            globoSize*=1.1;
+        }
+    } else if (event.key == "ArrowDown") {
+        if(globoSize>0){
+            globoSize*=.9;
+        }
+    }
+    globo.style.fontSize=`${globoSize}px`;
+}
+window.addEventListener("keydown", updateGloblo)
