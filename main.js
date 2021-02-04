@@ -41,22 +41,33 @@ window.addEventListener("keyup", function (event) {
 let globo = document.querySelector('#globo');
 let globoSize = 20;
 
-globo.style.fontSize=`${globoSize}px`;
+globo.style.fontSize = `${globoSize}px`;
 
 const updateGloblo = (event) => {
     event.preventDefault();
     if (event.key == "ArrowUp") {
-        if(globoSize>80){
+        if (globoSize > 80) {
             globo.textContent = '💥';
             window.removeEventListener("keydown", updateGloblo);
-        }else{
-            globoSize*=1.1;
+        } else {
+            globoSize *= 1.1;
         }
     } else if (event.key == "ArrowDown") {
-        if(globoSize>0){
-            globoSize*=.9;
+        if (globoSize > 0) {
+            globoSize *= .9;
         }
     }
-    globo.style.fontSize=`${globoSize}px`;
+    globo.style.fontSize = `${globoSize}px`;
 }
 window.addEventListener("keydown", updateGloblo)
+
+//Reto 2
+let modal = document.querySelector('#modal');
+document.querySelector('#modal-image').src = 'https://picsum.photos/300/200';
+
+document.querySelector('#openModal').addEventListener('click', function () {
+    modal.style.display = 'block';
+});
+document.querySelector('.close').addEventListener('click', function () {
+    modal.style.display = 'none';
+});
